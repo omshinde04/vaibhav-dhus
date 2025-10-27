@@ -32,6 +32,7 @@ export default function LeadershipReels() {
 
     if (video.paused) {
       video.play();
+      video.muted = false; // unmute when user manually plays
       setPlaying((prev) => prev.map((_, i) => i === index));
       videoRefs.current.forEach((v, i) => {
         if (i !== index && v && !v.paused) v.pause();
@@ -90,8 +91,13 @@ export default function LeadershipReels() {
                   src={video.src}
                   className="w-full h-full object-cover"
                   playsInline
-                  muted={false}
+                  muted
                   preload="metadata"
+                  onLoadedData={(e) => {
+                    const vid = e.target;
+                    vid.currentTime = 0.1; // show first frame
+                    vid.pause(); // ensure paused
+                  }}
                   loading="lazy"
                 />
                 <motion.button
