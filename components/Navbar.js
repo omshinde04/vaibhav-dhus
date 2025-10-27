@@ -1,10 +1,13 @@
 "use client";
-import { useState } from "react";
+
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [visible, setVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
 
   const navLinks = [
     { name: "मुखपृष्ठ", href: "#home" },
@@ -14,8 +17,31 @@ export default function Navbar() {
     { name: "संपर्क", href: "#contact" },
   ];
 
+  // Hide navbar on scroll down, show on scroll up
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        setVisible(false);
+      } else {
+        setVisible(true);
+      }
+
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [lastScrollY]);
+
   return (
-    <nav className="fixed top-0 left-0 w-full bg-[#FFF8EE]/80 backdrop-blur-lg border-b border-[#EBA937]/20 z-1000 shadow-md">
+    <motion.nav
+      initial={{ y: 0 }}
+      animate={{ y: visible ? 0 : -100 }}
+      transition={{ duration: 0.5, ease: "easeInOut" }}
+      className="fixed top-0 left-0 w-full bg-[#FFF8EE]/80 backdrop-blur-lg border-b border-[#EBA937]/20 z-1000 shadow-md"
+    >
       <div className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
         {/* --- Marathi Logo Title --- */}
         <motion.div
@@ -47,13 +73,16 @@ export default function Navbar() {
             </motion.a>
           ))}
 
+          {/* --- Buy Now Button --- */}
           <motion.a
-            href="#contact"
+            href="https://vaibhavdhus.com/order/index.php?sku=marathi-part-1"
+            target="_blank"
+            rel="noopener noreferrer"
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.2 }}
             className="bg-linear-to-r from-[#EBA937] to-[#2D2A6E] text-white px-5 py-2 rounded-full font-semibold shadow-md hover:shadow-lg transition-all duration-300"
           >
-            संपर्क करा
+            आता खरेदी करा
           </motion.a>
         </div>
 
@@ -97,18 +126,21 @@ export default function Navbar() {
               </motion.a>
             ))}
 
+            {/* --- Mobile Buy Now Button --- */}
             <motion.a
-              href="#contact"
+              href="https://vaibhavdhus.com/order/index.php?sku=marathi-part-1"
+              target="_blank"
+              rel="noopener noreferrer"
               onClick={() => setMenuOpen(false)}
               whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.2 }}
               className="bg-linear-to-r from-[#EBA937] to-[#2D2A6E] text-white text-lg px-8 py-3 rounded-full font-semibold shadow-md hover:shadow-xl transition-all duration-300"
             >
-              संपर्क करा
+              आता खरेदी करा
             </motion.a>
           </motion.div>
         )}
       </AnimatePresence>
-    </nav>
+    </motion.nav>
   );
 }

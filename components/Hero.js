@@ -4,7 +4,10 @@ import { motion } from "framer-motion";
 
 export default function Hero() {
   return (
-    <section className="relative w-full min-h-[90vh] md:min-h-screen overflow-hidden bg-[#0F0C29]">
+    <section
+      id="home"
+      className="relative w-full min-h-[90vh] md:min-h-screen overflow-hidden bg-[#0F0C29]"
+    >
       {/* === Backgrounds === */}
       <div className="absolute inset-0">
         {/* Desktop Background */}
