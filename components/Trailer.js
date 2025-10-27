@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Play, Pause } from "lucide-react";
 
@@ -26,20 +26,36 @@ export default function LeadershipReels() {
   const videoRefs = useRef([]);
   const [playing, setPlaying] = useState(Array(videos.length).fill(false));
 
+  // ✅ Auto play all videos muted (so thumbnails are visible)
+  useEffect(() => {
+    videoRefs.current.forEach((video) => {
+      if (video) {
+        video.muted = true;
+        video.play().catch(() => {}); // ignore autoplay errors
+      }
+    });
+  }, []);
+
   const handlePlayPause = (index) => {
     const video = videoRefs.current[index];
     if (!video) return;
 
+    // Pause all others
+    videoRefs.current.forEach((v, i) => {
+      if (v && i !== index) {
+        v.pause();
+        v.muted = true;
+      }
+    });
+
     if (video.paused) {
+      video.muted = false; // unmute selected
       video.play();
-      video.muted = false; // unmute when user manually plays
       setPlaying((prev) => prev.map((_, i) => i === index));
-      videoRefs.current.forEach((v, i) => {
-        if (i !== index && v && !v.paused) v.pause();
-      });
     } else {
       video.pause();
-      setPlaying((prev) => prev.map((p, i) => (i === index ? false : p)));
+      video.muted = true;
+      setPlaying((prev) => prev.map(() => false));
     }
   };
 
@@ -91,14 +107,9 @@ export default function LeadershipReels() {
                   src={video.src}
                   className="w-full h-full object-cover"
                   playsInline
+                  loop
+                  preload="auto"
                   muted
-                  preload="metadata"
-                  onLoadedData={(e) => {
-                    const vid = e.target;
-                    vid.currentTime = 0.1; // show first frame
-                    vid.pause(); // ensure paused
-                  }}
-                  loading="lazy"
                 />
                 <motion.button
                   onClick={() => handlePlayPause(index)}
