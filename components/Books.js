@@ -40,7 +40,7 @@ const books = [
 export default function Books() {
   return (
     <section
-      id="books"
+      id="book"
       className="relative w-full py-16 md:py-24 bg-[#0F0C29] text-white overflow-hidden"
     >
       {/* Background Gradient */}
