@@ -5,7 +5,7 @@ import Awards from "@/components/Awards";
 import Books from "@/components/Books";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
-
+import Trailer from "@/components/Trailer"; 
 export default function HomePage() {
   return (
     <div>
@@ -13,6 +13,7 @@ export default function HomePage() {
       <Hero/>
      <About/>
      <Books/>
+     <Trailer/>  
      <Awards/>
      <Contact/>
      <Footer/>
