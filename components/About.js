@@ -1,4 +1,5 @@
 "use client";
+
 import Image from "next/image";
 import { motion } from "framer-motion";
 
@@ -39,7 +40,7 @@ export default function About() {
           viewport={{ once: true }}
           className="relative shrink-0 flex justify-center md:justify-start"
         >
-          <div className="relative w-[260px] h-[260px] sm:w-[320px] sm:h-[320px] md:w-[420px] md:h-[420px] rounded-4xl overflow-hidden border border-[#FFD700]/40 shadow-[0_0_80px_rgba(255,215,0,0.25)]">
+          <div className="relative w-[260px] h-[260px] sm:w-[320px] sm:h-80 md:w-[420px] md:h-[420px] rounded-4xl overflow-hidden border border-[#FFD700]/40 shadow-[0_0_80px_rgba(255,215,0,0.25)]">
             <Image
               src="/images/about.jpeg"
               alt="Vaibhav Dhus"
@@ -109,7 +110,7 @@ export default function About() {
 
             <p>
               Since 2021, his voice has echoed across{" "}
-              <span className="text-[#FFD700] font-semibold">digital platforms</span> —
+              <span className="text-[#FFD700] font-semibold">digital platforms</span> — 
               empowering farmers, youth, and entrepreneurs to grow their dreams
               through strategy and wisdom. His teachings today shape the
               blueprint for a new generation of leaders.

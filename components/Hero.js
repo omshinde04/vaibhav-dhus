@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 export default function Hero() {
   return (
     <section className="relative w-full min-h-[90vh] md:min-h-screen overflow-hidden bg-[#0F0C29]">
-      {/* --- Backgrounds --- */}
+      {/* === Backgrounds === */}
       <div className="absolute inset-0">
         {/* Desktop Background */}
         <div className="hidden md:block absolute inset-0">
@@ -14,7 +14,7 @@ export default function Hero() {
             alt="Vaibhav Dhus Desktop Hero"
             fill
             priority
-            className="object-cover object-center scale-105 transition-transform duration-[6000ms] ease-in-out"
+            className="object-cover object-center scale-105 transition-transform duration-6000 ease-in-out"
           />
         </div>
 
@@ -25,29 +25,29 @@ export default function Hero() {
             alt="Vaibhav Dhus Mobile Hero"
             fill
             priority
-            className="object-cover object-center scale-110 transition-transform duration-[6000ms] ease-in-out"
+            className="object-cover object-center scale-110 transition-transform duration-6000 ease-in-out"
           />
         </div>
 
         {/* Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-[#0F0C29]/80 to-[#1A173B]/90 backdrop-blur-[2px]" />
+        <div className="absolute inset-0 bg-linear-to-b from-black/70 via-[#0F0C29]/80 to-[#1A173B]/90 backdrop-blur-[2px]" />
       </div>
 
-      {/* --- Content --- */}
+      {/* === Content === */}
       <div className="relative z-20 flex flex-col items-center justify-center text-center h-[90vh] md:h-screen px-6 md:px-12">
-        {/* Main Title */}
+        {/* --- Title --- */}
         <motion.h1
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
-          className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-extrabold 
-          text-transparent bg-clip-text bg-gradient-to-r from-[#FFD700] via-[#F6C90E] to-[#EBA937] 
+          className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold 
+          text-transparent bg-clip-text bg-linear-to-r from-[#FFD700] via-[#F6C90E] to-[#EBA937] 
           drop-shadow-[0_0_25px_rgba(255,215,0,0.6)] font-serif tracking-wide"
         >
           अंतः अस्ति प्रारंभः
         </motion.h1>
 
-        {/* Subtitle */}
+        {/* --- Subtitle --- */}
         <motion.p
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
@@ -57,14 +57,31 @@ export default function Hero() {
           वैभव ढुस – The Real Chanakya of Modern Business Era
         </motion.p>
 
-        {/* Buttons */}
+        {/* --- Achievement Line --- */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.3, delay: 0.5 }}
+          className="mt-5 sm:mt-7 text-[#FFD700] text-sm sm:text-base md:text-lg font-semibold tracking-wide flex flex-wrap justify-center gap-2 sm:gap-4"
+        >
+          <span className="bg-white/10 backdrop-blur-md px-4 py-1.5 rounded-full shadow-[0_0_20px_rgba(255,215,0,0.4)]">
+            🏆 #1 Marathi Motivational Book
+          </span>
+          <span className="bg-white/10 backdrop-blur-md px-4 py-1.5 rounded-full shadow-[0_0_20px_rgba(255,215,0,0.4)]">
+            💬 500+ Events
+          </span>
+          <span className="bg-white/10 backdrop-blur-md px-4 py-1.5 rounded-full shadow-[0_0_20px_rgba(255,215,0,0.4)]">
+            📚 3 Lakh+ Readers
+          </span>
+        </motion.div>
+
+        {/* --- Buttons --- */}
         <motion.div
           initial={{ opacity: 0, y: 60 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.4, delay: 0.5 }}
+          transition={{ duration: 1.4, delay: 0.7 }}
           className="mt-8 sm:mt-10 flex flex-col md:flex-row items-center gap-5 md:gap-6"
         >
-          {/* Buy Now Button */}
           <motion.a
             whileHover={{ scale: 1.08 }}
             whileTap={{ scale: 0.96 }}
@@ -72,14 +89,13 @@ export default function Hero() {
             target="_blank"
             rel="noopener noreferrer"
             className="relative px-8 sm:px-10 py-2.5 sm:py-3 rounded-full text-base sm:text-lg font-semibold text-[#0F0C29]
-            bg-gradient-to-r from-[#FFD700] via-[#F6C90E] to-[#EBA937]
+            bg-linear-to-r from-[#FFD700] via-[#F6C90E] to-[#EBA937]
             shadow-[0_0_25px_rgba(255,215,0,0.6)] hover:shadow-[0_0_40px_rgba(255,215,0,0.9)]
             transition-all duration-300"
           >
             Buy Now
           </motion.a>
 
-          {/* Watch Trailer Button */}
           <motion.a
             whileHover={{ scale: 1.08 }}
             whileTap={{ scale: 0.96 }}
@@ -91,12 +107,12 @@ export default function Hero() {
           </motion.a>
         </motion.div>
 
-        {/* Floating Glass Tag */}
+        {/* --- Floating Tag --- */}
         <motion.div
           initial={{ opacity: 0, y: 30, scale: 0.8 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{ duration: 1.6, delay: 0.8 }}
-          className="absolute bottom-6 sm:bottom-10 md:bottom-20 bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-5 sm:px-6 md:px-8 py-2 sm:py-3 md:py-4 shadow-2xl"
+          transition={{ duration: 1.6, delay: 0.9 }}
+          className="absolute bottom-3 sm:bottom-6 md:bottom-12 bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-5 sm:px-6 md:px-8 py-2 sm:py-3 shadow-2xl"
         >
           <p className="text-[#FFD700] text-xs sm:text-sm md:text-base font-semibold tracking-wider">
             Discover the Vision. Lead with Wisdom.
@@ -104,7 +120,7 @@ export default function Hero() {
         </motion.div>
       </div>
 
-      {/* --- Floating Lights --- */}
+      {/* === Floating Lights === */}
       <motion.div
         initial={{ y: 0 }}
         animate={{ y: [0, -20, 0] }}
