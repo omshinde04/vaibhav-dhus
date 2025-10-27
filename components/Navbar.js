@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Home, Book, Award, PhoneCall, User } from "lucide-react";
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -10,24 +10,22 @@ export default function Navbar() {
   const [lastScrollY, setLastScrollY] = useState(0);
 
   const navLinks = [
-    { name: "मुखपृष्ठ", href: "#home" },
-    { name: "आपणाबद्दल", href: "#about" },
-    { name: "पुस्तक", href: "#book" },
-    { name: "पुरस्कार", href: "#awards" },
-    { name: "संपर्क", href: "#contact" },
+    { name: "मुखपृष्ठ", href: "#home", icon: <Home size={18} /> },
+    { name: "आपणाबद्दल", href: "#about", icon: <User size={18} /> },
+    { name: "पुस्तक", href: "#book", icon: <Book size={18} /> },
+    { name: "पुरस्कार", href: "#awards", icon: <Award size={18} /> },
+    { name: "संपर्क", href: "#contact", icon: <PhoneCall size={18} /> },
   ];
 
   // Hide navbar on scroll down, show on scroll up
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
-
       if (currentScrollY > lastScrollY && currentScrollY > 100) {
         setVisible(false);
       } else {
         setVisible(true);
       }
-
       setLastScrollY(currentScrollY);
     };
 
@@ -66,8 +64,9 @@ export default function Navbar() {
               href={link.href}
               whileHover={{ scale: 1.1 }}
               transition={{ type: "spring", stiffness: 300 }}
-              className="relative text-[#2D2A6E] font-medium text-lg hover:text-[#EBA937] transition-colors duration-300"
+              className="relative flex items-center gap-1 text-[#2D2A6E] font-medium text-lg hover:text-[#EBA937] transition-colors duration-300"
             >
+              {link.icon}
               {link.name}
               <span className="absolute left-0 -bottom-1 w-0 h-0.5 bg-[#EBA937] transition-all duration-300 hover:w-full"></span>
             </motion.a>
@@ -120,8 +119,9 @@ export default function Navbar() {
                 initial={{ y: 20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ delay: i * 0.1 }}
-                className="text-2xl font-semibold text-[#2D2A6E] hover:text-[#EBA937] transition-all duration-300"
+                className="flex items-center gap-2 text-2xl font-semibold text-[#2D2A6E] hover:text-[#EBA937] transition-all duration-300"
               >
+                {link.icon}
                 {link.name}
               </motion.a>
             ))}
