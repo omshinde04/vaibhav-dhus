@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 export default function Hero() {
   return (
-    <section className="relative w-full min-h-screen overflow-hidden bg-[#0F0C29]">
+    <section className="relative w-full min-h-[90vh] md:min-h-screen overflow-hidden bg-[#0F0C29]">
       {/* --- Backgrounds --- */}
       <div className="absolute inset-0">
         {/* Desktop Background */}
@@ -14,7 +14,7 @@ export default function Hero() {
             alt="Vaibhav Dhus Desktop Hero"
             fill
             priority
-            className="object-cover object-center scale-105 transition-transform duration-6000 ease-in-out"
+            className="object-cover object-center scale-105 transition-transform duration-[6000ms] ease-in-out"
           />
         </div>
 
@@ -25,23 +25,23 @@ export default function Hero() {
             alt="Vaibhav Dhus Mobile Hero"
             fill
             priority
-            className="object-cover object-center scale-110 transition-transform duration-6000 ease-in-out"
+            className="object-cover object-center scale-110 transition-transform duration-[6000ms] ease-in-out"
           />
         </div>
 
-        {/* Gradient Overlay for readability */}
-        <div className="absolute inset-0 bg-linear-to-b from-black/70 via-[#0F0C29]/80 to-[#1A173B]/90 backdrop-blur-[2px]"></div>
+        {/* Gradient Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-[#0F0C29]/80 to-[#1A173B]/90 backdrop-blur-[2px]" />
       </div>
 
       {/* --- Content --- */}
-      <div className="relative z-20 flex flex-col items-center justify-center text-center h-screen px-6 md:px-12">
+      <div className="relative z-20 flex flex-col items-center justify-center text-center h-[90vh] md:h-screen px-6 md:px-12">
         {/* Main Title */}
         <motion.h1
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
-          className="text-4xl md:text-6xl lg:text-7xl font-extrabold 
-          text-transparent bg-clip-text bg-linear-to-r from-[#FFD700] via-[#F6C90E] to-[#EBA937] 
+          className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-extrabold 
+          text-transparent bg-clip-text bg-gradient-to-r from-[#FFD700] via-[#F6C90E] to-[#EBA937] 
           drop-shadow-[0_0_25px_rgba(255,215,0,0.6)] font-serif tracking-wide"
         >
           अंतः अस्ति प्रारंभः
@@ -52,7 +52,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.2, delay: 0.3 }}
-          className="mt-6 text-lg md:text-2xl text-white font-medium tracking-wide drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)] max-w-3xl leading-relaxed"
+          className="mt-4 sm:mt-6 text-base sm:text-lg md:text-2xl text-white font-medium tracking-wide drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)] max-w-3xl leading-relaxed"
         >
           वैभव ढुस – The Real Chanakya of Modern Business Era
         </motion.p>
@@ -62,7 +62,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 60 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.4, delay: 0.5 }}
-          className="mt-10 flex flex-col md:flex-row items-center gap-6"
+          className="mt-8 sm:mt-10 flex flex-col md:flex-row items-center gap-5 md:gap-6"
         >
           {/* Buy Now Button */}
           <motion.a
@@ -71,8 +71,8 @@ export default function Hero() {
             href="https://vaibhavdhus.com/order/index.php?sku=marathi-part-1"
             target="_blank"
             rel="noopener noreferrer"
-            className="relative px-10 py-3 rounded-full text-lg font-semibold text-[#0F0C29]
-            bg-linear-to-r from-[#FFD700] via-[#F6C90E] to-[#EBA937]
+            className="relative px-8 sm:px-10 py-2.5 sm:py-3 rounded-full text-base sm:text-lg font-semibold text-[#0F0C29]
+            bg-gradient-to-r from-[#FFD700] via-[#F6C90E] to-[#EBA937]
             shadow-[0_0_25px_rgba(255,215,0,0.6)] hover:shadow-[0_0_40px_rgba(255,215,0,0.9)]
             transition-all duration-300"
           >
@@ -84,7 +84,7 @@ export default function Hero() {
             whileHover={{ scale: 1.08 }}
             whileTap={{ scale: 0.96 }}
             href="#trailer"
-            className="relative border-2 border-[#EBA937] text-[#EBA937] px-10 py-3 rounded-full font-semibold text-lg 
+            className="relative border-2 border-[#EBA937] text-[#EBA937] px-8 sm:px-10 py-2.5 sm:py-3 rounded-full font-semibold text-base sm:text-lg 
             hover:text-[#0F0C29] hover:bg-[#EBA937] transition-all duration-300 shadow-[0_0_15px_rgba(235,169,55,0.4)]"
           >
             Watch Trailer
@@ -96,9 +96,9 @@ export default function Hero() {
           initial={{ opacity: 0, y: 30, scale: 0.8 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 1.6, delay: 0.8 }}
-          className="absolute bottom-14 md:bottom-20 bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-6 py-3 md:px-8 md:py-4 shadow-2xl"
+          className="absolute bottom-6 sm:bottom-10 md:bottom-20 bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-5 sm:px-6 md:px-8 py-2 sm:py-3 md:py-4 shadow-2xl"
         >
-          <p className="text-[#FFD700] text-sm md:text-base font-semibold tracking-wider">
+          <p className="text-[#FFD700] text-xs sm:text-sm md:text-base font-semibold tracking-wider">
             Discover the Vision. Lead with Wisdom.
           </p>
         </motion.div>
@@ -109,18 +109,18 @@ export default function Hero() {
         initial={{ y: 0 }}
         animate={{ y: [0, -20, 0] }}
         transition={{ duration: 6, repeat: Infinity }}
-        className="absolute bottom-16 right-10 hidden md:block"
+        className="absolute bottom-12 right-8 hidden md:block"
       >
-        <div className="w-8 h-8 rounded-full bg-[#FFD700]/70 blur-xl animate-pulse"></div>
+        <div className="w-6 h-6 md:w-8 md:h-8 rounded-full bg-[#FFD700]/70 blur-xl animate-pulse"></div>
       </motion.div>
 
       <motion.div
         initial={{ y: 0 }}
         animate={{ y: [0, 20, 0] }}
         transition={{ duration: 5, repeat: Infinity }}
-        className="absolute top-24 left-14 hidden md:block"
+        className="absolute top-16 left-10 hidden md:block"
       >
-        <div className="w-10 h-10 rounded-full bg-[#EBA937]/50 blur-xl"></div>
+        <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-[#EBA937]/50 blur-xl"></div>
       </motion.div>
     </section>
   );
